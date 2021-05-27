@@ -51,11 +51,16 @@ function startTimer() {
 }
 
 function getRandomQuote() {
-    return fetch(RANDOM_QUOTE_API_URL).then(response => response.json()).then(data => data.content)
+    return fetch(RANDOM_QUOTE_API_URL).then(response => response.json()).then(data => data.content).catch(error => console.log(error))
 }
 
 async function renderNewQuote() {
-    const quote = await getRandomQuote();
+    const quote;
+    try {
+        quote = await getRandomQuote();
+    } catch (e) {
+        console.log(e)
+    }
     quoteBox.innerHTML = '';
     quote.split('').forEach(char => {
         const charSpan = document.createElement('span');
