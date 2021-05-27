@@ -12,7 +12,6 @@ let wrongTypedChars = 0;
 
 function endGame() {
     getStats();
-    resetButton.disabled = false;
 }
 
 function renderStats(accuracy, wpm) {
@@ -26,8 +25,14 @@ function renderStats(accuracy, wpm) {
 function getStats() {
     console.log("Typed chars: "+typedChars);
     console.log("Wrong chars: "+wrongTypedChars);
-    var accuracy = ((typedChars - wrongTypedChars)/typedChars).toFixed(3)*100;
-    var WPM =  Math.floor((typedChars/5)/minutes);
+    var accuracy, WPM;
+    if (typedChars == 0){
+        accuracy = 0;
+        WPM = 0;
+    } else {
+        accuracy = ((typedChars - wrongTypedChars)/typedChars).toFixed(3)*100;
+        WPM =  Math.floor((typedChars/5)/minutes);
+    }
     console.log("Accuracy: "+accuracy);
     console.log("WPM: "+WPM);
     renderStats(accuracy, WPM);
@@ -35,7 +40,7 @@ function getStats() {
 
 function startTimer() {
     var timer = setInterval(function() {
-        if (seconds <= 0) {
+        if (seconds == 0) {
             clearInterval(timer);
             quoteInput.disabled = true;
             endGame();
@@ -103,8 +108,6 @@ resetButton.addEventListener('click', function() {
     while(statsSection.firstChild) {
         statsSection.firstChild.remove();
     }
-
-    resetButton.disabled = true;
 
     renderNewQuote();
 });

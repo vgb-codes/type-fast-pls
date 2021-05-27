@@ -6,3 +6,77 @@
     color: red;
     text-decoration: underline;
 }
+
+h2 {
+    font-family: 'Inconsolata', monospace;
+    text-align: center;
+    color: white;
+}
+
+.quote-box {
+    font-family: 'Noto Sans TC', sans-serif;
+    color: black;
+    background-color: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    width: 50vw;
+}
+
+.quote-input {
+    font-family: 'Noto Sans TC', sans-serif;
+    margin-bottom: 1rem;
+    width: 50vw;
+    height: 10vh;
+}
+
+.timer {
+    font-family: 'Inconsolata', monospace;
+    color: white;
+    text-align: center;
+    font-size: xx-large;
+    margin-bottom: 1rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inconsolata', monospace;
+    color: white;
+}
+
+body {
+    background-color: #1a1a1d;
+}
+
+#resetButton {
+    color: white;
+    background-color: red;
+    width: 15vw;
+}
+
+footer {
+    padding-top: 10px;;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5vh;
+    text-align: center;
+    color: white;
+    background-color: black;
+    font-family: 'Inconsolata', monospace;
+}

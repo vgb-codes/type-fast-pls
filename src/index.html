@@ -7,22 +7,29 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h2>type-fast-pls: A Typing Game</h2>
-        <div class="timer" id="timer">
-            60
-        </div>
-        <div class="game">
-            <div class="quote-box" id="quoteBox">
-
+        <div class="container">
+            <h2>(╯°Д°）╯ type-fast-pls /(.□ . \)</h2>
+            <div class="timer" id="timer">
+                60
             </div>
-            <textarea id="quoteInput" cols="30" rows="4" class="quote-input" placeholder="Click here to start the game..."></textarea>
-            <button disabled id="resetButton">Reset Game</button>
+            <div class="game">
+                <div class="quote-box" id="quoteBox">
+    
+                </div>
+                <textarea id="quoteInput" cols="30" rows="4" class="quote-input" placeholder="Click here to start the game..."></textarea> <br>
+                <button id="resetButton">Reset Game</button>
+            </div>
+            <div class="stats" id="stats">
+    
+            </div>
         </div>
-        <div class="stats" id="stats">
-
-        </div>
+        <footer>
+            Author: Vijaya Gajanan
+        </footer>
         <script src="script.js" defer></script> 
     </body>
 </html>
