@@ -9,6 +9,7 @@ let seconds = timeLimit;
 let minutes = timeLimit/60;
 let typedChars = 0;
 let wrongTypedChars = 0;
+let errors = 0;
 
 function endGame() {
     getStats();
@@ -30,7 +31,7 @@ function getStats() {
         accuracy = 0;
         WPM = 0;
     } else {
-        accuracy = ((typedChars - wrongTypedChars)/typedChars).toFixed(3)*100;
+        accuracy = (((typedChars - (wrongTypedChars + errors))/typedChars)*100).toFixed(2);
         WPM =  Math.floor((typedChars/5)/minutes);
     }
     console.log("Accuracy: "+accuracy);
@@ -41,12 +42,14 @@ function getStats() {
 function startTimer() {
     var timer = setInterval(function() {
         if (seconds == 0) {
+            document.getElementById("timer").innerHTML = seconds;
             clearInterval(timer);
             quoteInput.disabled = true;
             endGame();
+        } else {
+            document.getElementById("timer").innerHTML = seconds;
+            seconds -= 1;
         }
-        document.getElementById("timer").innerHTML = seconds;
-        seconds -= 1;
     }, 1000)
 }
 
@@ -73,6 +76,7 @@ quoteInput.addEventListener('input', () => {
     const userQuote = quoteInput.value.split('');
 
     typedChars+=1;
+    errors = 0
 
     correctQuote.forEach((charSpan, index) => {
         const scannedChar = userQuote[index]
@@ -86,12 +90,13 @@ quoteInput.addEventListener('input', () => {
         } else {
             charSpan.classList.add('incorrect');
             charSpan.classList.add('correct');
-            wrongTypedChars+=1;
-            console.log("wrong chars: "+wrongTypedChars);
+            errors+=1;
+            console.log("wrong chars: "+errors);
         }
     })
 
     if (userQuote.length == correctQuote.length) {
+        wrongTypedChars += errors;
         renderNewQuote();
     }
 });
@@ -102,6 +107,7 @@ resetButton.addEventListener('click', function() {
     quoteInput.blur();
     typedChars = 0;
     wrongTypedChars = 0;
+    errors = 0;
     seconds = timeLimit;
     document.getElementById("timer").innerHTML = timeLimit;
 
